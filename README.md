@@ -9,13 +9,13 @@ A go implementation of [Alex Van de Sande's ethereum-blockies](https://github.co
 ### Default options
 
 ```go
-  r := chi.NewRouter()
-  r.Get("/identicon/{address}", func(w http.ResponseWriter, req *http.Request) {
-		w.Header().Set("Content-Type", "image/svg+xml")
-		address := chi.URLParam(req, "address")
-		blockie := blockies.New(address, nil)
-		blockie.Write(w)
-	})
+r := chi.NewRouter()
+r.Get("/identicon/{address}", func(w http.ResponseWriter, req *http.Request) {
+  w.Header().Set("Content-Type", "image/svg+xml")
+  address := chi.URLParam(req, "address")
+  blockie := blockies.New(address, nil)
+  blockie.Write(w)
+})
 ```
 
 ### Custom options
@@ -23,19 +23,19 @@ A go implementation of [Alex Van de Sande's ethereum-blockies](https://github.co
 _All options are optional. For consistent results with other services/apps (e.g etherscan) use defaults._
 
 ```go
-  r := chi.NewRouter()
-  r.Get("/identicon/{address}", func(w http.ResponseWriter, req *http.Request) {
-		w.Header().Set("Content-Type", "image/svg+xml")
-		address := chi.URLParam(req, "address")
-		blockie := blockies.New(address, &blockies.Options{
-      Size: 15,
-      Scale: 3,
-      Color: "#ff0000",
-      BgColor: "#00ff00",
-      SpotColor: "#0000ff",
-    })
-		blockie.Write(w)
-	})
+r := chi.NewRouter()
+r.Get("/identicon/{address}", func(w http.ResponseWriter, req *http.Request) {
+  w.Header().Set("Content-Type", "image/svg+xml")
+  address := chi.URLParam(req, "address")
+  blockie := blockies.New(address, &blockies.Options{
+    Size: 15,
+    Scale: 3,
+    Color: "#ff0000",
+    BgColor: "#00ff00",
+    SpotColor: "#0000ff",
+  })
+  blockie.Write(w)
+})
 ```
 
 In the above example the icon will be 15x15 blocks, and each block will be 3x3 pixels. The icon canvas will be 45x45 pixels.

@@ -80,17 +80,17 @@ func TestNewDefault(t *testing.T) {
 	}
 	have := fmt.Sprint(b.ImageData)
 	want := "[0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 1 1 0 0 0 0 1 1 1 0 1 0 0 1 0 1 1 1 1 0 0 1 1 1 0 1 1 2 2 1 1 0]"
-	if  have !=  want {
+	if have != want {
 		t.Errorf("ImageData is incorrect: have: %v, want: %v", have, want)
 	}
 }
 
 func TestNewCustom(t *testing.T) {
 	b := New("0x1234567890abcdef1234567890abcdef12345678", &Options{
-		Size: 10,
-		Scale: 5,
-		Color: "#ff0000",
-		BgColor: "#00ff00",
+		Size:      10,
+		Scale:     5,
+		Color:     "#ff0000",
+		BgColor:   "#00ff00",
 		SpotColor: "#0000ff",
 	})
 	if b.Options.Size != 10 {
@@ -113,7 +113,7 @@ func TestNewCustom(t *testing.T) {
 	}
 	have := fmt.Sprint(b.ImageData)
 	want := "[1 2 1 1 1 1 1 1 2 1 1 0 1 0 0 0 0 1 0 1 1 1 1 0 1 1 0 1 1 1 2 0 1 0 0 0 0 1 0 2 0 0 0 0 1 1 0 0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 0 1 1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 1 0 1 1 1 1 1 1 0 1 0 0 1 1 2 2 1 1 0 0]"
-	if  have !=  want {
+	if have != want {
 		t.Errorf("ImageData is incorrect: have: %v, want: %v", have, want)
 	}
 }

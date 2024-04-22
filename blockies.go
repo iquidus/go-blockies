@@ -21,7 +21,7 @@ type Options struct {
 
 // Blockie is a struct that contains the blockie data
 type Blockie struct {
-	Options  *Options
+	Options   *Options
 	Randseed  []int32
 	ImageData []int
 }
@@ -42,7 +42,7 @@ func randomAddress() string {
 	bytes := make([]byte, 20)
 	_, err := rand.Read(bytes)
 	if err != nil {
-			panic(err)
+		panic(err)
 	}
 	return fmt.Sprintf("0x%x", bytes)
 }
@@ -113,14 +113,14 @@ func New(address string, options *Options) *Blockie {
 	} else {
 		b.Options = &Options{}
 	}
-	
+
 	var a string
 	if address == "" {
 		a = randomAddress()
 	} else {
 		a = strings.ToLower(address)
 	}
-	
+
 	b.seedrand([]int32(a))
 
 	if b.Options.Size == 0 {
@@ -138,7 +138,7 @@ func New(address string, options *Options) *Blockie {
 	if b.Options.SpotColor == "" {
 		b.Options.SpotColor = b.createColor()
 	}
-	
+
 	b.ImageData = b.createImageData()
 
 	return b
